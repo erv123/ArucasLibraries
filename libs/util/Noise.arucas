@@ -57,14 +57,10 @@ class Voronoi{
 
     }
     fun getValue(vec: Vec3d) {
-        times = [];
-        previousTime = getNanoTime();
+
         centreCell = this.grid.getCellForPoint(vec, true);
-        times.append(getNanoTime()-previousTime);
-        previousTime = getNanoTime();
+
         neighbours = centreCell.getNeighbours();
-        times.append(getNanoTime()-previousTime);
-        previousTime = getNanoTime();
         cells = neighbours.append(centreCell);
         minDistanceCell = 1/0;
         minPointDistance = 1/0;
@@ -81,9 +77,6 @@ class Voronoi{
                 }
             }
         }
-        times.append(getNanoTime()-previousTime);
-        previousTime = getNanoTime();
-        //return new Vector(times);
         return new Vec2d(Math.sqrt(minPointDistance), minDistanceCell);
     }
 
